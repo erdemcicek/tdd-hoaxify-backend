@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
+
 @RestController
 public class ErrorHandler implements ErrorController {
 	
 	private final ErrorAttributes errorAttributes;
 	
+	
 	public ErrorHandler(ErrorAttributes errorAttributes) {
 		this.errorAttributes = errorAttributes;
 	}
+	
 	
 	@RequestMapping("/error")
 	ApiError handleError(WebRequest webRequest) {
