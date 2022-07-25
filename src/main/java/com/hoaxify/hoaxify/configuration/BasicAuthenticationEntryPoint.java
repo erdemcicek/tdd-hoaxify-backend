@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
+
 public class BasicAuthenticationEntryPoint implements AuthenticationEntryPoint {
+	
 
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
@@ -18,5 +20,6 @@ public class BasicAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
 		response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
 	}
+	
 
 }
