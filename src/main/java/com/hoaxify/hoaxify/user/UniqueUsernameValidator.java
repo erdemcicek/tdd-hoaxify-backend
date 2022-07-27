@@ -5,6 +5,7 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
 	
 	
@@ -22,4 +23,5 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
 		return false;
 	}
 
+	
 }
