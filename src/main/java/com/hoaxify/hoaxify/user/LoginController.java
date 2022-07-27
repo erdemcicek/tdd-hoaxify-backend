@@ -16,6 +16,7 @@ public class LoginController {
 		return new UserVM(loggedInUser);
 	}
 	
+	
 	/* 
 	
 	// 1.way
@@ -24,6 +25,7 @@ public class LoginController {
 		User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return Collections.singletonMap("id", loggedInUser.getId());
 	}
+	
 	
 	// 2.way
 	@PostMapping("/api/1.0/login")
@@ -40,4 +42,6 @@ public class LoginController {
 //		return new ApiError(401, "Access error", "/api/1.0/login");
 //	}
 
+	
+	
 }
