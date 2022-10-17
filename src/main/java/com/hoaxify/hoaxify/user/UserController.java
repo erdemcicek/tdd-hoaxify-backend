@@ -57,29 +57,12 @@ public class UserController {
 	
 	@PutMapping("/users/{id:[0-9]+}")
 	@PreAuthorize("#id == principal.id")
-	public UserVM updateUser(@PathVariable long id, @RequestBody(required = false) UserUpdateVM userUpdate) {
+	public UserVM updateUser(@PathVariable long id, @Valid @RequestBody(required = false) UserUpdateVM userUpdate) {
 		User updated = userService.update(id, userUpdate);
 		return new UserVM(updated);
 	}
 	
 	
-	// MethodArgumentNotValidException
 	
-	@ExceptionHandler({MethodArgumentNotValidException.class})
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	ApiError handleValidationException(MethodArgumentNotValidException exception, HttpServletRequest request) {
-		ApiError apiError = new ApiError(400, "Validation error", request.getServletPath());
-		
-		BindingResult result = exception.getBindingResult();
-		
-		Map<String, String> validationErrors = new HashMap<>();
-		
-		for(FieldError fieldError: result.getFieldErrors()) {
-			validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
-		}
-		apiError.setValidationErrors(validationErrors);
-		
-		return apiError;
-	}
 
 }

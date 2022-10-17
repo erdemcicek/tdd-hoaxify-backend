@@ -19,7 +19,7 @@ public class HoaxifyApplication {
 	}
 	
 	@Bean
-	@Profile("!test")
+	@Profile("dev")
 	CommandLineRunner run(UserService userService) {
 		return (a) -> {
 			IntStream.rangeClosed(1, 15).mapToObj(i -> {

@@ -22,6 +22,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		
+		http.headers().disable();
+		
 		//BasicAuthenticationEntryPoint ==> We need to override it. There is an alternative in Spring
 		http.httpBasic().authenticationEntryPoint(new BasicAuthenticationEntryPoint());
 		
@@ -29,6 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.authorizeHttpRequests()
 			.antMatchers(HttpMethod.POST, "/api/1.0/login").authenticated()
 			.antMatchers(HttpMethod.PUT, "/api/1.0/users/{id:[0-9]+}").authenticated()
+			.antMatchers(HttpMethod.POST, "/api/1.0/hoaxes").authenticated()
 			.and()
 			.authorizeHttpRequests().anyRequest().permitAll();
 		
